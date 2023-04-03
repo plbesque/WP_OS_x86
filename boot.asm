@@ -1,16 +1,4 @@
-.section .text
-.global start
+jmp $
 
-start:
-    mrs x0, mpdir_ell
-    and x0, x0, #3
-    cmp x0, #0
-    beq kernel_entry
-
-end:
-    b end
-
-kernel_entry:
-    mov sp, #80000
-    bl KMain
-    b end
+times 510-($-$$) db 0
+db 0x55, 0xaa  
